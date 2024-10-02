@@ -1,0 +1,22 @@
+<div class="container">
+    <!-- Zone de recherche -->
+    <input type="text" [(ngModel)]="titleFilter" class="form-control" placeholder="Rechercher par titre..." />
+  
+    <div class="row">
+      <div class="col-md-4" *ngFor="let category of categories">
+        <img 
+          [src]="category.image" 
+          [alt]="category.title" 
+          class="img-fluid h-50 w-75" 
+          (click)="showDescription(category.description)">
+        <h3>{{ category.title | uppercase }}</h3>
+        
+        <!-- Condition pour afficher le bouton -->
+        <button class="btn btn-primary" *ngIf="category.available">Voir produits</button>
+        
+        <!-- Message si la catégorie n'est pas disponible -->
+        <div *ngIf="!category.available">Catégorie non disponible</div>
+      </div>
+    </div>
+  </div>
+  
